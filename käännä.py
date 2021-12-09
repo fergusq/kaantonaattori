@@ -16,7 +16,7 @@ class Kääntäjä:
 	def käännä(self, teksti):
 		nlp = SPACY_MODELS[self.src]
 		doc = nlp(teksti)
-		lauseet = list(map(str, doc.sents))
+		lauseet = map(str, doc.sents)
 		return " ".join(self.translator(lause)[0]["translation_text"] for lause in lauseet)
 
 
