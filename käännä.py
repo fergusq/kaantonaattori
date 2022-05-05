@@ -17,6 +17,12 @@ class Kääntäjä:
 		nlp = SPACY_MODELS[self.src]
 		doc = nlp(teksti)
 		lauseet = list(map(str, doc.sents))
-		return " ".join(self.translator(lause)[0]["translation_text"] for lause in lauseet)
+		ans = []
+		for lause in lauseet:
+			if not lause.strip():
+				ans.append(lause)
+			else:
+				ans.append(self.translator(lause)[0]["translation_text"])
+		return " ".join(ans)
 
 
